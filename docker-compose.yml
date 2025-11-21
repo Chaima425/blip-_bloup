@@ -1,23 +1,28 @@
-version: "3.8"
+version: '3.8'
+
 services:
   backend:
-    build:
-      context: ./backend
     image: blip-backend:local
+    build: ./backend
+    container_name: blip-_bloup-backend-1
     ports:
       - "8000:8000"
-    env_file:
-      - ./backend/.env
-    restart: unless-stopped
+    volumes:
+      - ./backend:/app
+    environment:
+      - ENV=development
 
   frontend:
-    build:
-      context: ./frontend
     image: blip-frontend:local
+    build: ./frontend
+    container_name: blip-_bloup-frontend-1
     ports:
-      - "8501:8501"
-    env_file:
-      - ./frontend/.env
-    depends_on:
-      - backend
-    restart: unless-stopped
+      - "8503:8501"   # <- port hôte changé pour éviter le conflit avec iris-frontend
+    volumes:
+      - ./frontend:/app
+    environment:
+      - BACKEND_URL=http://backend:8000
+
+networks:
+  default:
+    name: blip-_bloup_default
