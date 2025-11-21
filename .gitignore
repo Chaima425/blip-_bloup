@@ -1,1 +1,44 @@
 .env/
+.venv/ 
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Virtual env ---
+.venv/
+env/
+venv/
+ENV/
+backend/.env
+frontend/.env/
+
+# --- Environment variables ---
+.env
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+
+# --- Database local ---
+*.sqlite3
+*.db
+
+# --- Build / Dist ---
+build/
+dist/
+*.egg-info/
+
+# --- Docker ---
+*.tar
+*.gz
+docker-compose.override.yml
+
+# --- Azure ---
+.azure/
